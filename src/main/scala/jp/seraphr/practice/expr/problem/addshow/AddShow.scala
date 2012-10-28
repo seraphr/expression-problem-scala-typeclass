@@ -7,6 +7,10 @@ trait AddShow extends BaseNodes {
     def apply(aNode: _N): String
   }
 
+  def show[_N: Show](aNode: _N): String = {
+    implicitly[Show[_N]].apply(aNode)
+  }
+
   trait ShowImpls{
     implicit object ShowValue extends Show[ValueNode] {
       override def apply(aNode: ValueNode): String = aNode.value.toString
@@ -15,10 +19,5 @@ trait AddShow extends BaseNodes {
     implicit def ShowAdd[_L: Show, _R: Show] = new Show[AddNode[_L, _R]]{
       override def apply(aNode: AddNode[_L, _R]) =  "%s + %s".format(show(aNode.left), show(aNode.right))
     }
-  }
-
-
-  def show[_N: Show](aNode: _N): String = {
-    implicitly[Show[_N]].apply(aNode)
   }
 }
