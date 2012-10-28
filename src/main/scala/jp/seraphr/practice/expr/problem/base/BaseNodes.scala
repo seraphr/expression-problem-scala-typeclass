@@ -16,7 +16,7 @@ trait BaseNodes {
   }
 
   trait CalculateImpls {
-    implicit object ValueCalculate extends Calculate[ValueNode] {
+    implicit object CalculateValue extends Calculate[ValueNode] {
       override def apply(aNode: ValueNode): Int = aNode.value
     }
 
