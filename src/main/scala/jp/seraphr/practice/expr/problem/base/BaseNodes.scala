@@ -20,7 +20,7 @@ trait BaseNodes {
       override def apply(aNode: ValueNode): Int = aNode.value
     }
 
-    implicit def AddNodeCalculate[_L: Calculate, _R: Calculate]: Calculate[AddNode[_L, _R]] = {
+    implicit def CalculateAddNode[_L: Calculate, _R: Calculate]: Calculate[AddNode[_L, _R]] = {
         new Calculate[AddNode[_L, _R]]{
           override def apply(aNode: AddNode[_L, _R]) = calc(aNode.left) + calc(aNode.right)
         }
