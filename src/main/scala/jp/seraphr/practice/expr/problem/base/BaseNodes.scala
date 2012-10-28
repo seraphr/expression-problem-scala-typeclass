@@ -20,12 +20,11 @@ trait BaseNodes {
   }
 
   trait NodeBase
-
   case class ValueNode(value: Int) extends NodeBase
   case class AddNode[_Left, _Right](left: _Left, right: _Right) extends NodeBase
 
   implicit def adder[_L <: NodeBase](aLeft: _L) = new AnyRef() {
-    def add[_R <: NodeBase](aRight: _R) = AddNode(aLeft, aRight)
+    def ++[_R <: NodeBase](aRight: _R) = AddNode(aLeft, aRight)
   }
 
   def calc[_N: Calculate](aNode: _N): Int = {

@@ -12,13 +12,13 @@ object MergeMain {
     import language.reflectiveCalls
 
 
-    val tNode = ValueNode(10) sub ValueNode(5)
+    val tNode = ValueNode(10) -- ValueNode(5)
     println(show(tNode) + " = " + calc(tNode))
 
-    val tNode2 = ValueNode(5) add ValueNode(4) sub ValueNode(2)
+    val tNode2 = ValueNode(5) ++ ValueNode(4) -- ValueNode(2)
     println(show(tNode2) + " = " + calc(tNode2))
 
-    val tNode3 = ValueNode(5) sub (ValueNode(4) sub ValueNode(2))
+    val tNode3 = ValueNode(5) -- (ValueNode(4) -- ValueNode(2))
     println(show(tNode3) + " = " + calc(tNode3))
   }
 

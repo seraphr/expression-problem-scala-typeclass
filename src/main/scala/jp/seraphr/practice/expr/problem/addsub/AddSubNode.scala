@@ -15,6 +15,6 @@ trait AddSubNode extends BaseNodes {
 
   case class SubNode[_Left, _Right](left: _Left, right: _Right) extends NodeBase
   implicit def subtracter[_L <: NodeBase](aLeft: _L) = new AnyRef() {
-    def sub[_R <: NodeBase](aRight: _R) = SubNode(aLeft, aRight)
+    def --[_R <: NodeBase](aRight: _R) = SubNode(aLeft, aRight)
   }
 }
